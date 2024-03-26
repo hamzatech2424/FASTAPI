@@ -11,13 +11,13 @@ async def read_root():
 
 # get all students route
 @app.get('/students')
-async def getStudents():
+async def getAllStudents():
     return response(True,students,'successfully get all students')
 
 
 # get specific students route
 @app.get('/students/{student_id}')
-async def getStudents(student_id):
+async def getSpecificStudent(student_id):
         
    def find_student_by_id(student_id):
      for student in students:
@@ -35,7 +35,7 @@ async def getStudents(student_id):
        
 # add new student
 @app.post('/students/add')
-async def addStudent(student:StudentItem):
+async def addNewStudent(student:StudentItem):
     
     length = len(students)
     student.studentId = length
@@ -47,7 +47,7 @@ async def addStudent(student:StudentItem):
 
 # delete student
 @app.delete('/students/delete/{student_id}')
-async def addStudent(student_id):
+async def deleteStudent(student_id):
     
     def studentExist():
         for student in students:
